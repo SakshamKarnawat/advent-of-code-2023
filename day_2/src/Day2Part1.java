@@ -7,12 +7,13 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class Day2Part1 {
+    // * Color limits:
     static int redLimit = 12;
     static int greenLimit = 13;
     static int blueLimit = 14;
 
     public static void main(String[] args) throws Exception {
-
+        // * Using AtomicInteger (can't use a non final variable in a lambda function)
         AtomicInteger gameIDTotal = new AtomicInteger(0);
         try (Stream<String> lines = Files.lines(Paths.get("src/input.txt"), Charset.defaultCharset())) {
             // * Iterating over each line:
@@ -66,7 +67,7 @@ public class Day2Part1 {
                 gameIDTotal.set(gameIDTotal.get() + gameID);
             });
             // * Print total sum of valid gameIDs:
-            System.out.println(gameIDTotal);
+            System.out.printf("Total of gameIDs is: %d\n", gameIDTotal.get());
         }
     }
 }
